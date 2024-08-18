@@ -1,0 +1,103 @@
+@charset "UTF-8"
+aside{
+  width: 30%;
+}
+article{
+  width: 85%;
+}
+.news{
+  display: flex;
+  justify-content: space-between;
+}
+.header{
+  background-image: url(DiscordIconBannar.png);
+   background-position: center;
+   background-size: cover;
+   padding-top: 20%;
+}
+.text{
+  text-align: left;
+  padding-left: 15%;
+  font-size: 1.5vw;
+}
+.bannar{
+  width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+aside{
+  width: 15%;
+  padding-top: 2%;
+  background: linear-gradient(to right, #022571, #022561);
+  background: -moz-linear-gradient(left, #022571, #022561);
+  background: -webkit-linear-gradient(left, #022571, #022561);/*0072FF*/
+}
+article .block{
+  margin-bottom: 0%;
+  background: #dbedf0;
+  background: #dbedf0;
+  background-color: #dbedf0;
+}
+h1{
+  font-size: 3vw;
+  text-align: center;
+}
+h2{
+  font-size: 2.5vw;
+  text-align: left;
+  margin-left: 10%;
+}
+h3{
+  font-size: 2vw;
+  text-align: left;
+  margin-left: 10%;
+}
+.block{
+  border-bottom: 3px solid #0c4da2;
+  padding-bottom: 2vw;
+}
+.menu{
+  font-size: 1.5vw;
+  text-decoration: none;
+  color: white;
+}
+.menuItem{
+  text-align: center;
+}
+.menu:hover{
+  color: cyan;
+  animation: flash 5s infinite; /* アニメーションflashを1秒ごとに繰り返す */
+}
+@keyframes flash {
+  0%, 100% {
+    text-shadow: 0 0 0.2vw cyan, 0 0 3vw blue, 0 0 3vw white;
+    /* 明るく光るよう影を重ねる */
+  }
+  80% {
+    text-shadow: 0 0 0.5vw cyan, 0 0 2vw cyan, 0 0 5vw white;
+      /* 淡く光るよう影を重ねる */
+  }
+}
+.invite{
+  font-size: 2vw;
+  font-family: serif;
+  text-decoration: none;
+  background: #6A96E9;
+  color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 10px;
+  transition:  0.2s;
+}
+.invite:hover{
+  transition:  0.2s;
+  background: #0909D9;
+}
+.inviteBlock{
+  text-align: center;
+}
+*{
+  margin:0%;
+  padding:0%;
+}
