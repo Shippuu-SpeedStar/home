@@ -26,9 +26,14 @@ article{
     object-fit: cover;
     display: block;
 }
+.aside_Items{
+  position: -webkit-sticky;  /* for Safari */
+    position: sticky;
+    top: 0px;  /* 画面上端オフセット */
+}
 aside{
   width: 15%;
-  padding-top: 2%;
+  /*padding-top: 2%;*/
   background: linear-gradient(to right, #022571, #022561);
   background: -moz-linear-gradient(left, #022571, #022561);
   background: -webkit-linear-gradient(left, #022571, #022561);/*0072FF*/
@@ -67,14 +72,14 @@ h3{
 }
 .menu:hover{
   color: cyan;
-  animation: flash 5s infinite; /* アニメーションflashを1秒ごとに繰り返す */
+  animation: flash_menu 3s infinite; /* アニメーションflashを1秒ごとに繰り返す */
 }
-@keyframes flash {
+@keyframes flash_menu {
   0%, 100% {
-    text-shadow: 0 0 0.2vw cyan, 0 0 3vw blue, 0 0 3vw white;
+    text-shadow: 0 0 1vw white, 0 0 2vw cyan, 0 0 4vw white;
     /* 明るく光るよう影を重ねる */
   }
-  80% {
+  50% {
     text-shadow: 0 0 0.5vw cyan, 0 0 2vw cyan, 0 0 5vw white;
       /* 淡く光るよう影を重ねる */
   }
@@ -93,9 +98,110 @@ h3{
 .invite:hover{
   transition:  0.2s;
   background: #0909D9;
+  animation: flash 3s infinite; /* アニメーションflashを1秒ごとに繰り返す */
 }
-.inviteBlock{
+@keyframes flash {
+  0%, 100% {
+    text-shadow: 0 0 1vw white, 0 0 2vw cyan, 0 0 4vw white;
+    box-shadow: 0 0 1vw white, 0 0 2vw cyan, 0 0 4vw white;
+    /* 明るく光るよう影を重ねる */
+  }
+  50% {
+    text-shadow: 0 0 0.5vw cyan, 0 0 2vw cyan, 0 0 5vw white;
+    box-shadow: 0 0 0.5vw cyan, 0 0 2vw cyan, 0 0 5vw white;
+      /* 淡く光るよう影を重ねる */
+  }
+}
+.text_center{
   text-align: center;
+}
+.SNS_Button{
+  font-size: 2vw;
+  font-family: serif;
+  text-decoration: none;
+  background: #6A96E9;
+  color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 10px;
+  transition:  0.2s;
+}
+.SNS_Button:hover{
+  transition:  0.2s;
+  background: #0909D9;
+  animation: flash 3s infinite; /* アニメーションflashを1秒ごとに繰り返す */
+}
+.SNS_Button_Block{
+  margin-bottom: 1vw;
+  text-align: left;
+  padding-left: 20%;
+  font-size: 1.5vw;
+}
+@media (max-width:600px) {
+  .news{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: white;
+    text-align: center;
+  }
+  aside{
+    width: 100%;
+    height: 50vw;
+  }
+  article{
+    width: 100%;
+  }
+  .invite{
+    font-size: 5vw;
+    font-family: serif;
+    text-decoration: none;
+    background: #6A96E9;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px;
+    transition:  0.2s;
+  }
+  .text{
+    text-align: left;
+    padding-left: 15%;
+    font-size: 4vw;
+  }
+  h1{
+    font-size: 6vw;
+  }
+  h2{
+    font-size: 7vw;
+  }
+  h3{
+      font-size: 4vw;
+  }
+  .menu{
+    font-size: 5vw;
+    text-decoration: none;
+    color: white;
+  }
+  .SNS_Button{
+    font-size: 5vw;
+    font-family: serif;
+    text-decoration: none;
+    background: #6A96E9;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px;
+    transition:  0.2s;
+  }
+  .SNS_Button:hover{
+    transition:  0.2s;
+    background: #0909D9;
+  }
+  .SNS_Button_Block{
+    margin-bottom: 3vw;
+    text-align: center;
+  }
 }
 *{
   margin:0%;
