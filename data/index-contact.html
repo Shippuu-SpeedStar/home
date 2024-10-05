@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang ="ja">
+   <head>
+       <meta charset="UTF-8">
+       <title>疾風スピードスター</title>
+       <meta name="description" content="Discordのサーバー疾風スピードスターの公式ホームページです。サーバーの歴史です。">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet"href="style.css">
+       <link rel="icon" type="image/png" href="DiscordSurverIcon.png">
+   </head>
+   <body>
+     <div class="header">
+     </div>
+     <div class="news">
+        <aside>
+          <div class="aside_Items">
+            <h1 style="color:white;padding-top:5%;">メニュー</h1>
+            <div class="menuItem"><a href="main.html" class="menu" class="text"><p>概要</p></a></div>
+            <div class="menuItem"><a href="index-rule.html" class="menu" class="text"><p>ルール</p></a></div>
+            <div class="menuItem"><a href="index-history.html" class="menu" class="text"><p>歴史</p></a></div>
+            <div class="menuItem"><a href="index-manager.html" class="menu" class="text"><p>管理者紹介</p></a></div>
+            <div class="menuItem"><a href="index-contact.html" class="menu" class="text"><p>お問い合わせ</p></a></div>
+          </div>
+        </aside>
+        <article>
+          <div class="block">
+            <h1>疾風スピードスターお問い合わせ</h1>
+            <div class="text">お問い合わせフォームです。</div>
+          </div>
+          <div class="block">
+            <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSe4XI8gzLbJxe_bGS1x_KONR8oacNq-1LmQ_e5QnoBm-mNbPw/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+              <div id="your_name">
+                <label class="text_form_top" for="name">お名前(ニックネームも可)</label>
+                <div class="text"><input name="entry.408991100" id="name" type="text" placeholder="名前を入力(ニックネームも可)" maxlength="50" required></div>
+              </div>
+              <label class="text_form" for="How_to_Reply">返信方法</label>
+              <div class="text">
+                <input id="How_to_Reply-a" type="radio" name="entry.461450005" value="メール" checked onclick="Mail_select()">メール<br>
+                <input id="How_to_Reply-b" type="radio" name="entry.461450005" value="DM" onclick="DM_select()">DM<br>
+                <input id="How_to_Reply-c" type="radio" name="entry.461450005" value="返信不要" onclick="Other_select()">返信不要<br>
+              </div>
+              <!--メールを選択した場合表示-->
+              <div id="Reply_Mail_Group">
+                <label class="text_form" for="Reply_Mail">メールアドレス</label>
+                <div class="text"><input name="entry.366374250" type="mail" id="Reply_Mail" placeholder="someone@example.com"></div>
+              </div>
+              <!--DMを選択した場合表示-->
+              <div id="Reply_DM_Group">
+                <label class="text_form" for="Reply_DM">Discordユーザー名</label>
+                <div class="text"><input name="entry.366374250" type="username" id="Reply_DM" placeholder="Discordでの名前を入力"></div>
+              </div>
+              <label class="text_form" id="Inquiry_Details-select" >お問い合わせ内容</label>
+              <div class="text">
+                <input name="entry.1817657459" class="check" type="checkbox" value="サーバーの招待リンクが切れている。" onclick="Inquiry_select()" checked>サーバーの招待リンクが切れている。<br>
+                <input name="entry.1817657459" class="check" type="checkbox" id="Inquiry_Details-rule" value="サーバーのルールに関する質問" onclick="Inquiry_select()">サーバーのルールに関する質問<br>
+                <input name="entry.1817657459" class="check" type="checkbox" id="Inquiry_Details-other" value="その他" onclick="Inquiry_select()">その他<br>
+              </div>
+              <div id="Inquiry_Details">
+                <label class="text_form" for="Contact_us">お問い合わせ内容</label>
+                <div class="text"><textarea name="entry.1886469106" type="textarea" id="Contact_us" placeholder="コメントを入力"></textarea></div>
+              </div>
+              <div class="text"><input type="submit" id="submit_button" value="送信"></div>
+            </form>
+          </div>
+        </article>
+      </div>
+      <script>
+        var submitted = false;
+        document.getElementById("Reply_Mail_Group").style.display="block";
+        document.getElementById("Reply_DM_Group").style.display="none";
+        document.getElementById("Inquiry_Details").style.display="none";
+        var check_other = document.getElementById("Inquiry_Details-other");
+        var check_rule = document.getElementById("Inquiry_Details-rule");
+        function Mail_select() {
+          document.getElementById("Reply_Mail_Group").style.display="block";
+          document.getElementById("Reply_DM_Group").style.display="none";
+        }
+        function DM_select() {
+          document.getElementById("Reply_DM_Group").style.display="block";
+          document.getElementById("Reply_Mail_Group").style.display="none";
+        }
+        function Other_select() {
+          document.getElementById("Reply_DM_Group").style.display="none";
+          document.getElementById("Reply_Mail_Group").style.display="none";
+        }
+        function Inquiry_select(){
+          if (check_other.checked || check_rule.checked){
+            document.getElementById("Inquiry_Details").style.display="block";
+            document.getElementById("Contact_us").required = true;
+          } else {
+            document.getElementById("Inquiry_Details").style.display="none";
+            document.getElementById("Contact_us").required = false;
+          }
+          isCheck();
+        }
+        function isCheck() {
+          let arr_checkBoxes = document.getElementsByClassName("check");
+          let count = 0;
+          for (let i = 0; i < arr_checkBoxes.length; i++) {
+            if (arr_checkBoxes[i].checked) {
+            count++;
+          }
+        }
+        if (count > 0) {
+          document.getElementById("submit_button").disabled = false;
+          document.getElementById('Inquiry_Details-select').textContent = 'お問い合わせ内容';
+        } else {
+          document.getElementById("submit_button").disabled = true;
+          document.getElementById('Inquiry_Details-select').textContent = 'お問い合わせ内容(必須)';
+        };
+      }
+      </script>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted)  {window.location='main.html';}" ></iframe>
+   </body>
+</html>
