@@ -55,6 +55,9 @@ h3{
   border-bottom: 3px solid #0c4da2;
   padding-bottom: 2vw;
 }
+.bannar{
+  width: 100%
+}
 .menu{
   font-size: 1.5vw;
   text-decoration: none;
