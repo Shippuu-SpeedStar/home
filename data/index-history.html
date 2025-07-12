@@ -7,6 +7,15 @@
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet"href="style.css">
        <link rel="icon" type="image/png" href="DiscordSurverIcon.png">
+       <style>
+       canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
    </head>
    <body>
      <div class="header">
@@ -48,7 +57,102 @@
             <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">40人</strong>を突破！</div>
             <h3>2024年9月24日</h3>
             <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">50人</strong>を突破！</div>
+            <h3>2024年11月2日</h3>
+            <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">60人</strong>を突破！</div>
+            <h3>2024年12月10日</h3>
+            <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">70人</strong>を突破！</div>
+            <h3>2025年1月23日</h3>
+            <div class="text">Asphalt Legends Uniteでのクラブを再開しました！</div>
+            <div class="text">ノルマ一切なしでさらに参加しやすいクラブに！</div>
+            <h3>2025年3月23日</h3>
+            <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">80人</strong>を突破！</div>
+            <h3>2025年5月15日</h3>
+            <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;">90人</strong>を突破！</div>
+            <h3>2025年7月5日</h3>
+            <div class="text">サーバーのメンバーが<strong style="text-shadow: 0 0 1vw cyan;" id="target">100人</strong>を突破！</div>
           </div>
+          <canvas id="fireworks"></canvas>
+          <script>
+            const canvas = document.getElementById('fireworks');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+            });
+
+            class Particle {
+              constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.radius = Math.random() * 2 + 2;
+                this.color = color;
+                this.speedX = (Math.random() - 0.5) * 6;
+                this.speedY = (Math.random() - 0.5) * 6;
+                this.life = 100;
+              }
+
+              update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life -= 1;
+                this.radius *= 0.96;
+              }
+
+              draw(ctx) {
+                ctx.save(); // 状態を保存
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.restore(); // 状態を元に戻す
+              }
+            }
+
+            const particles = [];
+
+            function animate() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw(ctx);
+                if (p.life <= 0 || p.radius <= 0.5) {
+                  particles.splice(i, 1);
+                }
+              }
+              requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            function spawnFirework(x, y) {
+              const colors = ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#ff00ff', '#ffffff'];
+              const color = colors[Math.floor(Math.random() * colors.length)];
+              for (let i = 0; i < 30; i++) {
+                particles.push(new Particle(x, y, color));
+              }
+            }
+
+            const target = document.getElementById('target');
+            target.addEventListener('mouseenter', e => {
+              const rect = target.getBoundingClientRect();
+              const x = rect.left + rect.width / 2;
+              const y = rect.top + rect.height / 2;
+              spawnFirework(x, y);
+            });
+            function resizeCanvas() {
+              canvas.width = document.documentElement.scrollWidth;
+              canvas.height = document.documentElement.scrollHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            window.addEventListener('scroll', resizeCanvas); // ← ページの拡張に対応
+          </script>
         </article>
       </div>
    </body>
